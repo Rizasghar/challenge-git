@@ -1,13 +1,10 @@
 const tape = require('tape')
 const jsonist = require('jsonist')
-
-const PORT = process.env.PORT = process.env.PORT || require('get-PORT-sync')()
 const server = require('./server')
-
-const urlBase = `http://localhost:${PORT}`
+import {API_BASE_URL} from "./API.config"
 
 tape('should respond hello', (t) => {
-  jsonist.get(urlBase, (err, body) => {
+  jsonist.get(API_BASE_URL, (err, body) => {
     if (err) t.error(err)
 
     t.equal(body.msg, 'hello')
